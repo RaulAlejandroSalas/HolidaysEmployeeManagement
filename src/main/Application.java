@@ -3,6 +3,7 @@
  */
 package main;
 
+import ui.PrincipalScreen;
 import ui.TermsAndUseScreen;
 import ui.WelcomeScreen;
 
@@ -22,11 +23,17 @@ public class Application {
 //		welcomeScreen.setVisible(true);
 //		welcomeScreen.setLocationRelativeTo(null);
 		
-		TermsAndUseScreen termsAndUseScreen = new TermsAndUseScreen();
-		termsAndUseScreen.setBounds(0,0,600,360);
-		termsAndUseScreen.setResizable(false);
-		termsAndUseScreen.setVisible(true);
-		termsAndUseScreen.setLocationRelativeTo(null);
+//		TermsAndUseScreen termsAndUseScreen = new TermsAndUseScreen();
+//		termsAndUseScreen.setBounds(0,0,600,360);
+//		termsAndUseScreen.setResizable(false);
+//		termsAndUseScreen.setVisible(true);
+//		termsAndUseScreen.setLocationRelativeTo(null);
+		
+		PrincipalScreen principalScreen = new PrincipalScreen();
+		principalScreen.setBounds(0,0,650,450);
+		principalScreen.setVisible(true);
+		principalScreen.setResizable(false);
+		principalScreen.setLocationRelativeTo(null);
 
 	}
 
