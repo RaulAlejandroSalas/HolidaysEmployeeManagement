@@ -31,10 +31,10 @@ public class WelcomeScreen extends JFrame{
 	
 	private void initComponents() {
 		 //setting Center Image Logo
-		 //ImageIcon imageIcon = new ImageIcon("images/logo-coca.png"); //setting image inside Object ImageIcon
-		 //lbCompanyImagenLogo = new JLabel(imageIcon); //adding image to Label
-		 //lbCompanyImagenLogo.setBounds(25, 15, 300, 150); //setting image dimensions
-		 //add(lbCompanyImagenLogo);
+		 ImageIcon imageIcon = new ImageIcon("images/logo-coca.png"); //setting image inside Object ImageIcon
+		 lbCompanyImagenLogo = new JLabel(imageIcon); //adding image to Label
+		 lbCompanyImagenLogo.setBounds(25, 15, 300, 150); //setting image dimensions
+		 add(lbCompanyImagenLogo);
 		 
 		 //setting Center Label System Name
 		 lbSystemName = new JLabel("Holidays Management System");
