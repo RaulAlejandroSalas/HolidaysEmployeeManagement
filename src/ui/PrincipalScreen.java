@@ -23,9 +23,6 @@ import javax.swing.JTextField;
  */
 public class PrincipalScreen extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JMenuBar menuBar;
@@ -57,9 +54,11 @@ public class PrincipalScreen extends JFrame {
 		this.initNavBarComponents();
 		this.initPositionTopComponents();
 		this.initPositionCenterComponents();
+		this.initFooterComponents();
 	}
 	
 	
+
 	private void initNavBarComponents() {
 		// Setting MenuBar
 		menuBar = new JMenuBar();
@@ -236,6 +235,18 @@ public class PrincipalScreen extends JFrame {
 		
 		
 		
+	}
+
+
+	/**
+	 * 
+	 */
+	private void initFooterComponents() {
+		lBFooter = new JLabel("© 2020 The Coca-Cola Company | All rights reserved");
+		lBFooter.setBounds(135, 445, 500, 30);
+		lBFooter.setFont(new Font("Andele Mono",1,12));
+		lBFooter.setForeground(new Color(255,255,255));
+		add(lBFooter);
 	}
 
 }
