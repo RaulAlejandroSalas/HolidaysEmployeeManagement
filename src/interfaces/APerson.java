@@ -3,7 +3,6 @@
  */
 package interfaces;
 
-import enums.Antiquity;
 import models.Deparment;
 
 /**
@@ -15,6 +14,6 @@ public abstract class APerson {
 	public String firstLastName;
 	public String secondLastName;
 	public Deparment deparment;
-	public Antiquity antiquity;
+	public String antiquity;
 
 }

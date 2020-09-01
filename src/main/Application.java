@@ -5,8 +5,8 @@ package main;
 
 import javax.swing.SwingUtilities;
 
-import ui.PrincipalScreen;
-import ui.TermsAndUseScreen;
+import controller.WelcomeScreenController;
+import models.ApplicationModel;
 import ui.WelcomeScreen;
 
 /**
@@ -25,10 +25,9 @@ public class Application {
 			public void run() {
 				try {
 					WelcomeScreen welcomeScreen = new WelcomeScreen();
-					welcomeScreen.setBounds(0,0,350,450);
-					welcomeScreen.setResizable(false);
-					welcomeScreen.setVisible(true);
-					welcomeScreen.setLocationRelativeTo(null);
+					ApplicationModel appModel = new ApplicationModel();
+					WelcomeScreenController welcomeScreenController = new WelcomeScreenController(welcomeScreen,appModel);
+					welcomeScreenController.initController();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

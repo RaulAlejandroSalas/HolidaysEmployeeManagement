@@ -3,43 +3,64 @@
  */
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
-import interfaces.ICommand;
 import models.ApplicationModel;
+import models.Deparment;
+import models.Employee;
 import ui.PrincipalScreen;
 
 /**
  * @author Lic.Raul Alejandro Salas Texido
  *
  */
-public class PrincipalScreenController implements ActionListener {
+public class PrincipalScreenController {
 
 	private PrincipalScreen principalScreen;
+	private ApplicationModel appModel;
 	
-	public PrincipalScreenController(PrincipalScreen principalScreen) {
+	public PrincipalScreenController(PrincipalScreen principalScreen, ApplicationModel appModel) {
 		this.principalScreen = principalScreen;
+		this.appModel = appModel;
+		this.initView();
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		//Setting in the Application Model the Employee Data for the UI Components
-		String employeeName = this.principalScreen.getTxtEmployeeName().getText().trim();
-		String employeeFirstName = this.principalScreen.getTxtEmployeeFirstLastName().getText().trim();
-		String employeeSecondName = this.principalScreen.getTxtEmployeeFirstLastName().getText().trim();
-		if(employeeName.equals("")|| employeeFirstName.equals("") || employeeSecondName.equals("")) {
-			JOptionPane.showMessageDialog(null, "The Input data Cannot Empty");
-		}else {
-			//Command Invoker(Caller)
-			ICommand command = (ICommand)e.getSource();
-			command.execute();
-		}
+	
+	private void initView() {
+		principalScreen.setBounds(0,0,640,535);
+        principalScreen.setVisible(true);
+        principalScreen.setResizable(false);
+        principalScreen.setLocationRelativeTo(null);
+	}
+	
+	
+	public void initController() {
+		this.principalScreen.getmINewCalulation().addActionListener(e->resetViewComponents());
+		this.principalScreen.getmIHolidaysCalculation().addActionListener(e->calculateHolidays());
+		this.principalScreen.getmIExitApplication().addActionListener(e->System.exit(0));
+	}
+	
+	
+	
+	private void calculateHolidays() {
+		String employeeName,employeeLastFirstName,employeeLastSecondName,department,antiquity;
+		employeeName=this.principalScreen.getTxtEmployeeName().getText().trim();
+		employeeLastFirstName = this.principalScreen.getTxtEmployeeFirstLastName().getText().trim();
+		employeeLastSecondName= this.principalScreen.getTxtEmployeeSecondLastName().getText().trim();
+		department = this.principalScreen.getcBDepartmentOptions().getSelectedItem().toString();
+		antiquity = this.principalScreen.getcBAntiquity().getSelectedItem().toString();
+		this.appModel.setEmployee(new Employee(employeeName,employeeLastFirstName,employeeLastSecondName, 
+antiquity, new Deparment(department)));
+		System.out.println(this.appModel.getEmployee());
 	}
 
-	public static String getAppModelState() {
-		return ApplicationModel.getEmployeeName();
+
+	private void resetViewComponents() {
+		this.principalScreen.getTxtEmployeeName().setText("");
+		this.principalScreen.getTxtEmployeeFirstLastName().setText("");
+		this.principalScreen.getTxtEmployeeSecondLastName().setText("");
 	}
+
+
+	
+	
 }

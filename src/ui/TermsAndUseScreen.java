@@ -20,6 +20,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import controller.TermAndUseController;
+import models.ApplicationModel;
 
 /**
  * @author Lic. Raul Alejandro Salas Texido
@@ -185,7 +186,7 @@ public class TermsAndUseScreen extends JFrame  {
 		tADescription = new JTextArea();
 		tADescription.setEditable(false);
 		tADescription.setFont(new Font("Andale Mono",0,11));
-		tADescription.setText("\n\n    TÉRMINOS Y CONDICIONES "
+		tADescription.setText("\n\n    Tï¿½RMINOS Y CONDICIONES "
 				+ "\n\n     A. FORBIDDEN ITS SALE OR DISTRIBUTION WITHOUT AUTHORIZATION OF RAUL ALEAJANDRO SALAS TEXIDO."
 				+ "\n     B. FORBIDDEN THE ALTERATION OF THE SOURCE CODE OR DESIGN OF THE GRAPHIC INTERFACES."
 				+ "\n     C. RAUL ALEJANDRO SALAS TEXIDO IS NOT RESPONSIBLE FOR THE MISUSE OF THIS SOFTWARE."
@@ -197,24 +198,24 @@ public class TermsAndUseScreen extends JFrame  {
 		add(scrollPane);
 		
 		//Setting Section CheckBox
-		chAccept = new JCheckBox("I " +TermAndUseController.getAppModelState()+ " Accept");
+		chAccept = new JCheckBox("I " + ApplicationModel.getUserAuthenticateName()+" Accept");
 		chAccept.setBounds(10, 250, 300, 30);
 		add(chAccept);
 		
-		chAccept.addChangeListener(new TermAndUseController(this));
+		//chAccept.addChangeListener(new TermAndUseController(this));
 		
 		//Setting Section Buttons
 		btnAccept = new JButton("Continue");
 		btnAccept.setBounds(10, 290, 100, 30);
 		btnAccept.setEnabled(false);
 		add(btnAccept);
-		btnAccept.addActionListener(new TermAndUseController(this));
+		//btnAccept.addActionListener(new TermAndUseController(this));
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(120, 290, 100, 30);
 		add(btnCancel);
 		
-		btnCancel.addActionListener(new TermAndUseController(this));
+		//btnCancel.addActionListener(new TermAndUseController(this));
 		
 		//Setting Logo Right Side
 		ImageIcon image = new ImageIcon("images/coca-cola.png");

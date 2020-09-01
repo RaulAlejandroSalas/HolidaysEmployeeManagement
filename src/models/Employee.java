@@ -3,7 +3,7 @@
  */
 package models;
 
-import enums.Antiquity;
+
 import interfaces.APerson;
 
 /**
@@ -12,7 +12,7 @@ import interfaces.APerson;
  */
 public class Employee extends APerson{
 	
-	public Employee(String name, String firstLastName, String secondLastName, Antiquity antiquity , Deparment department) {
+	public Employee(String name, String firstLastName, String secondLastName, String antiquity , Deparment department) {
 		this.name=name;
 		this.firstLastName = firstLastName;
 		this.secondLastName = secondLastName;
@@ -24,7 +24,7 @@ public class Employee extends APerson{
 		return this.name;
 	}
 	
-	public Antiquity getAntiquity() {
+	public String getAntiquity() {
 		return this.antiquity;
 	}
 	

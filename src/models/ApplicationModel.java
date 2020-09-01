@@ -9,31 +9,44 @@ import interfaces.APerson;
  *
  */
 public class ApplicationModel {
-	private static String employeeName;
-	private static APerson employee;
+	private static String userAuthenticateName;
+	private Employee employee;
+	
 	
 	public ApplicationModel() {
-		this.employeeName = new String();
+		this.userAuthenticateName = new String();
 	}
-	
+
 	/**
-	 * @param employeeName the employeeName to set
+	 * @return the userAuthenticateName
 	 */
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
+	public static String getUserAuthenticateName() {
+		return userAuthenticateName;
 	}
-	
-	public static String getEmployeeName() {
-		return employeeName;
+
+	/**
+	 * @param userAuthenticateName the userAuthenticateName to set
+	 */
+	public void setUserAuthenticateName(String userAuthenticateName) {
+		ApplicationModel.userAuthenticateName = userAuthenticateName;
 	}
-	
-	public void setEmployeeData(APerson person) {
-		this.employee = person;
-	}
-	
-	public static APerson getEmployeeData() {
+
+	/**
+	 * @return the employee
+	 */
+	public Employee getEmployee() {
 		return employee;
 	}
+
+	/**
+	 * @param employee the employee to set
+	 */
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	
+	
+	
+    
 
 }

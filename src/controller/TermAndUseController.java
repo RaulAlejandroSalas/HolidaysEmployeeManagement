@@ -3,12 +3,6 @@
  */
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import models.ApplicationModel;
 import ui.PrincipalScreen;
 import ui.TermsAndUseScreen;
@@ -17,19 +11,39 @@ import ui.TermsAndUseScreen;
  * @author Lic.Raul Alejandro Salas Texido
  *
  */
-public class TermAndUseController implements ActionListener, ChangeListener {
+public class TermAndUseController{
 	private TermsAndUseScreen termsAndUseScreen;
+	private ApplicationModel appModel;
 	
-	
-	public TermAndUseController(TermsAndUseScreen termsAndUseScreen) {
+	public TermAndUseController(TermsAndUseScreen termsAndUseScreen, ApplicationModel appModel) {
 		this.termsAndUseScreen = termsAndUseScreen;
+		this.appModel = appModel;
+		this.initView();
+	}
+	
+	private void initView() {
+		termsAndUseScreen.setBounds(0,0,600,360);
+    	termsAndUseScreen.setResizable(false);
+    	termsAndUseScreen.setVisible(true);
+    	termsAndUseScreen.setLocationRelativeTo(null);
 	}
 	
 	
-	@Override
-	public void stateChanged(ChangeEvent e) {
-		System.out.println("[INFO][TERM-USE-SCREEN] State has been Changed");
-		if(this.termsAndUseScreen.getChAccept().isSelected()) {
+	public void initController() {
+		this.termsAndUseScreen.getChAccept().addChangeListener(l->chAcceptState());
+		this.termsAndUseScreen.getBtnAccept().addActionListener(l->navigateTo());
+	}
+
+	private void navigateTo() {
+		PrincipalScreen principalScreen = new PrincipalScreen();
+		PrincipalScreenController principalController = new PrincipalScreenController(principalScreen, appModel);
+		principalController.initController();
+		this.termsAndUseScreen.setVisible(false);
+	}
+
+	private void chAcceptState() {
+		if(this.termsAndUseScreen.getChAccept().isSelected()) 
+		{
 			this.termsAndUseScreen.getBtnAccept().setEnabled(true);
 			this.termsAndUseScreen.getBtnCancel().setEnabled(false);
 		}else {
@@ -37,30 +51,5 @@ public class TermAndUseController implements ActionListener, ChangeListener {
 			this.termsAndUseScreen.getBtnCancel().setEnabled(true);
 		}
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.out.println("[INFO][TERM-USE-SCREEN] Action has been Dispatched");
-		if(e.getSource().equals(this.termsAndUseScreen.getBtnAccept())) {
-			System.out.println("[INFO][TERM-USE-SCREEN] Action Accept has been Dispatched");	
-			PrincipalScreen principalScreen = new PrincipalScreen();
-			principalScreen.setBounds(0,0,640,535);
-			principalScreen.setVisible(true);
-			principalScreen.setResizable(false);
-			principalScreen.setLocationRelativeTo(null);
-			this.termsAndUseScreen.setVisible(false);
-		}else {
-			System.out.println("[INFO][TERM-USE-SCREEN] Action Cancel has been Dispatched");
-		}
-	}
-	
-	
-	public static String getAppModelState() {
-		return ApplicationModel.getEmployeeName();
-	}
-	
-	
-	
-	
 
 }

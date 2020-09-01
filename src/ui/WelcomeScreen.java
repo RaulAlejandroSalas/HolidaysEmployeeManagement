@@ -24,7 +24,6 @@ public class WelcomeScreen extends JFrame{
 		 setTitle("Welcome"); //Adding title to Principal Interface
 		 getContentPane().setBackground(new Color(255,0,0));//adding background 
 		 
-		 
 		// setIconImage(new ImageIcon(getClass().getResource("images/icon.png")).getImage()); //adding image to left
 		 this.initComponents();
 	
@@ -70,12 +69,10 @@ public class WelcomeScreen extends JFrame{
 		 btnEnter.setForeground(new Color(255,0,0));
 		 add(btnEnter);
 		 
-		 //attaching handle events
-		 btnEnter.addActionListener(new WelcomeScreenController(this));
 		 
 		 
 		 //setting Section Copy Rights
-		 lbCopyRights = new JLabel("© 2020 The Coca-Cola Company");
+		 lbCopyRights = new JLabel("ï¿½ 2020 The Coca-Cola Company");
 		 lbCopyRights.setBounds(85,375, 300, 30);
 		 lbCopyRights.setFont(new Font("Andele Mono", 1, 12)); //negrita
 		 lbCopyRights.setForeground(new Color(255,255,255));

@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controller.PrincipalScreenController;
+import models.ApplicationModel;
 
 /**
  * @author Lic.Raul Alejandro Salas Texido
@@ -32,7 +33,7 @@ public class PrincipalScreen extends JFrame {
 	// Menus
 	private JMenu optionsMenu, calculateMenu, aboutUsMenu;
 	// ItemsMenu
-	private JMenuItem  mIAboutUs, exitApplicationIteMenuItem, holidaysCalculationMenuItem, newCalulationMenuItem;
+	private JMenuItem  mIAboutUs, mIExitApplication, mIHolidaysCalculation, mINewCalulation;
 	 
 	
 	// Labels
@@ -48,9 +49,6 @@ public class PrincipalScreen extends JFrame {
 	private JComboBox<String> cBDepartmentOptions,cBAntiquity;
 	
 	
-
-	
-
 	public PrincipalScreen() {
 		setLayout(null);
 		setTitle("Principal Screen");
@@ -81,18 +79,16 @@ public class PrincipalScreen extends JFrame {
 		menuBar.add(optionsMenu);
 
 		// Adding MenuItems to OptionsMenu
-		newCalulationMenuItem = new NewCalulationMenuItem("New");
-		newCalulationMenuItem.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
-		newCalulationMenuItem.setForeground(new Color(255, 0, 0)); // foreground color White
-		optionsMenu.add(newCalulationMenuItem);
-		newCalulationMenuItem.addActionListener(new PrincipalScreenController(this));
-
-		exitApplicationIteMenuItem = new ExitApplicationIteMenuItem("Exit");
-		exitApplicationIteMenuItem.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
-		exitApplicationIteMenuItem.setForeground(new Color(255, 0, 0)); // foreground color White
-		optionsMenu.add(exitApplicationIteMenuItem);
-		exitApplicationIteMenuItem.addActionListener(new PrincipalScreenController(this));
-
+		mINewCalulation = new JMenuItem("New");
+		mINewCalulation.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
+		mINewCalulation.setForeground(new Color(255, 0, 0)); // foreground color White
+		optionsMenu.add(mINewCalulation);
+		
+		mIExitApplication = new JMenuItem("Exit");
+		mIExitApplication.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
+		mIExitApplication.setForeground(new Color(255, 0, 0)); // foreground color White
+		optionsMenu.add(mIExitApplication);
+	
 		calculateMenu = new JMenu("Calculate");
 		calculateMenu.setBackground(new Color(255, 0, 0)); // Background color Red
 		calculateMenu.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
@@ -100,13 +96,12 @@ public class PrincipalScreen extends JFrame {
 		menuBar.add(calculateMenu);
 
 		// Adding Menus Items
-		holidaysCalculationMenuItem = new HolidaysCalculationMenuItem("Holidays");
-		holidaysCalculationMenuItem.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
-		holidaysCalculationMenuItem.setForeground(new Color(255, 0, 0)); // foreground color White
-		calculateMenu.add(holidaysCalculationMenuItem);
+		mIHolidaysCalculation = new JMenuItem("Holidays");
+		mIHolidaysCalculation.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
+		mIHolidaysCalculation.setForeground(new Color(255, 0, 0)); // foreground color White
+		calculateMenu.add(mIHolidaysCalculation);
 		
-		holidaysCalculationMenuItem.addActionListener(new PrincipalScreenController(this));
-
+		
 		aboutUsMenu = new JMenu("About Us...");
 		aboutUsMenu.setBackground(new Color(255, 0, 0)); // Background color Red
 		aboutUsMenu.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
@@ -127,7 +122,7 @@ public class PrincipalScreen extends JFrame {
 		lBLogo.setBounds(5, 5, 250, 100);
 		add(lBLogo);
 
-		lBWelcome = new JLabel("Welcome " + PrincipalScreenController.getAppModelState());
+		lBWelcome = new JLabel("Welcome " +  ApplicationModel.getUserAuthenticateName());
 		lBWelcome.setBounds(280, 30, 300, 50);
 		lBWelcome.setFont(new Font("Andale Mono", 1, 30));
 		lBWelcome.setForeground(new Color(255, 255, 255));
@@ -250,6 +245,50 @@ public class PrincipalScreen extends JFrame {
 	
 	
 
+	
+	
+
+	/**
+	 * @return the mIExitApplication
+	 */
+	public JMenuItem getmIExitApplication() {
+		return mIExitApplication;
+	}
+
+	/**
+	 * @param mIExitApplication the mIExitApplication to set
+	 */
+	public void setmIExitApplication(JMenuItem mIExitApplication) {
+		this.mIExitApplication = mIExitApplication;
+	}
+
+	/**
+	 * @return the mIHolidaysCalculation
+	 */
+	public JMenuItem getmIHolidaysCalculation() {
+		return mIHolidaysCalculation;
+	}
+
+	/**
+	 * @param mIHolidaysCalculation the mIHolidaysCalculation to set
+	 */
+	public void setmIHolidaysCalculation(JMenuItem mIHolidaysCalculation) {
+		this.mIHolidaysCalculation = mIHolidaysCalculation;
+	}
+
+	/**
+	 * @return the mINewCalulation
+	 */
+	public JMenuItem getmINewCalulation() {
+		return mINewCalulation;
+	}
+
+	/**
+	 * @param mINewCalulation the mINewCalulation to set
+	 */
+	public void setmINewCalulation(JMenuItem mINewCalulation) {
+		this.mINewCalulation = mINewCalulation;
+	}
 
 	/**
 	 * @return the txtEmployeeName
@@ -339,7 +378,7 @@ public class PrincipalScreen extends JFrame {
 	 * 
 	 */
 	private void initFooterComponents() {
-		lBFooter = new JLabel("© 2020 The Coca-Cola Company | All rights reserved");
+		lBFooter = new JLabel("ï¿½ 2020 The Coca-Cola Company | All rights reserved");
 		lBFooter.setBounds(135, 445, 500, 30);
 		lBFooter.setFont(new Font("Andele Mono",1,12));
 		lBFooter.setForeground(new Color(255,255,255));
