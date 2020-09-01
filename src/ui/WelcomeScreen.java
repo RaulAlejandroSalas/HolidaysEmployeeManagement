@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.*;
 
+import controller.WelcomeScreenController;
+
 /**
  * @author Lic. Raul Alejandro Salas Texido
  *
@@ -21,7 +23,9 @@ public class WelcomeScreen extends JFrame{
 		 setLayout(null); //default layout system
 		 setTitle("Welcome"); //Adding title to Principal Interface
 		 getContentPane().setBackground(new Color(255,0,0));//adding background 
-		 //setIconImage(new ImageIcon(getClass().getResource("images/icon.png")).getImage()); //adding image to left
+		 
+		 
+		// setIconImage(new ImageIcon(getClass().getResource("images/icon.png")).getImage()); //adding image to left
 		 this.initComponents();
 	
 	}
@@ -66,6 +70,8 @@ public class WelcomeScreen extends JFrame{
 		 btnEnter.setForeground(new Color(255,0,0));
 		 add(btnEnter);
 		 
+		 //attaching handle events
+		 btnEnter.addActionListener(new WelcomeScreenController(this));
 		 
 		 
 		 //setting Section Copy Rights
@@ -75,9 +81,71 @@ public class WelcomeScreen extends JFrame{
 		 lbCopyRights.setForeground(new Color(255,255,255));
 		 add(lbCopyRights);
 		 
-		 
-		 
 	}
+
+
+
+
+	/**
+	 * @return the textEmployeeName
+	 */
+	public JTextField getTextEmployeeName() {
+		return textEmployeeName;
+	}
+
+
+
+
+	/**
+	 * @param textEmployeeName the textEmployeeName to set
+	 */
+	public void setTextEmployeeName(JTextField textEmployeeName) {
+		this.textEmployeeName = textEmployeeName;
+	}
+
+
+
+
+	/**
+	 * @return the lbEmployeeName
+	 */
+	public JLabel getLbEmployeeName() {
+		return lbEmployeeName;
+	}
+
+
+
+
+	/**
+	 * @param lbEmployeeName the lbEmployeeName to set
+	 */
+	public void setLbEmployeeName(JLabel lbEmployeeName) {
+		this.lbEmployeeName = lbEmployeeName;
+	}
+
+
+
+
+	/**
+	 * @return the btnEnter
+	 */
+	public JButton getBtnEnter() {
+		return btnEnter;
+	}
+
+
+
+
+	/**
+	 * @param btnEnter the btnEnter to set
+	 */
+	public void setBtnEnter(JButton btnEnter) {
+		this.btnEnter = btnEnter;
+	}
+	
+	
+	
+	
 	
 	
 	
