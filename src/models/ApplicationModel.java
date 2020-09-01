@@ -3,16 +3,19 @@
  */
 package models;
 
+import interfaces.APerson;
+
 /**
  * @author Lic.Raul Alejandro Salas Texido
  *
  */
 public class ApplicationModel {
 	private static String employeeName;
-
+	private Employee employee;
 	
 	public ApplicationModel() {
 		this.employeeName = new String();
+		
 	}
 
 	@Override
@@ -31,6 +34,11 @@ public class ApplicationModel {
 	
 	public static String getEmployeeName() {
 		return employeeName;
+	}
+
+	public static APerson getEmployeeData() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import controller.PrincipalScreenController;
+
 /**
  * @author Lic.Raul Alejandro Salas Texido
  *
@@ -29,7 +31,9 @@ public class PrincipalScreen extends JFrame {
 	// Menus
 	private JMenu optionsMenu, calculateMenu, aboutUsMenu;
 	// ItemsMenu
-	private JMenuItem mICalculus, mIAboutUs, mIExit, mINew;
+	private JMenuItem  mIAboutUs, exitApplicationIteMenuItem, holidaysCalculationMenuItem, newCalulationMenuItem;
+	 
+	
 	// Labels
 	private JLabel lBLogo, lBWelcome, lBTitle, lBEmployeeName, lBEmployeeFirstLastName, lBEmployeeSecondLastName,
 			lBDeparment, lBAntiquity, lBResult, lBFooter;
@@ -73,15 +77,15 @@ public class PrincipalScreen extends JFrame {
 		menuBar.add(optionsMenu);
 
 		// Adding MenuItems to OptionsMenu
-		mINew = new JMenuItem("New");
-		mINew.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
-		mINew.setForeground(new Color(255, 0, 0)); // foreground color White
-		optionsMenu.add(mINew);
+		newCalulationMenuItem = new NewCalulationMenuItem("New");
+		newCalulationMenuItem.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
+		newCalulationMenuItem.setForeground(new Color(255, 0, 0)); // foreground color White
+		optionsMenu.add(newCalulationMenuItem);
 
-		mIExit = new JMenuItem("Exit");
-		mIExit.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
-		mIExit.setForeground(new Color(255, 0, 0)); // foreground color White
-		optionsMenu.add(mIExit);
+		exitApplicationIteMenuItem = new ExitApplicationIteMenuItem("Exit");
+		exitApplicationIteMenuItem.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
+		exitApplicationIteMenuItem.setForeground(new Color(255, 0, 0)); // foreground color White
+		optionsMenu.add(exitApplicationIteMenuItem);
 
 		calculateMenu = new JMenu("Calculate");
 		calculateMenu.setBackground(new Color(255, 0, 0)); // Background color Red
@@ -90,10 +94,10 @@ public class PrincipalScreen extends JFrame {
 		menuBar.add(calculateMenu);
 
 		// Adding Menus Items
-		mICalculus = new JMenuItem("Holidays");
-		mICalculus.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
-		mICalculus.setForeground(new Color(255, 0, 0)); // foreground color White
-		calculateMenu.add(mICalculus);
+		holidaysCalculationMenuItem = new HolidaysCalculationMenuItem("Holidays");
+		holidaysCalculationMenuItem.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
+		holidaysCalculationMenuItem.setForeground(new Color(255, 0, 0)); // foreground color White
+		calculateMenu.add(holidaysCalculationMenuItem);
 
 		aboutUsMenu = new JMenu("About Us...");
 		aboutUsMenu.setBackground(new Color(255, 0, 0)); // Background color Red
@@ -114,7 +118,7 @@ public class PrincipalScreen extends JFrame {
 		lBLogo.setBounds(5, 5, 250, 100);
 		add(lBLogo);
 
-		lBWelcome = new JLabel("Welcome");
+		lBWelcome = new JLabel("Welcome " + PrincipalScreenController.getAppModelState());
 		lBWelcome.setBounds(280, 30, 300, 50);
 		lBWelcome.setFont(new Font("Andale Mono", 1, 30));
 		lBWelcome.setForeground(new Color(255, 255, 255));
