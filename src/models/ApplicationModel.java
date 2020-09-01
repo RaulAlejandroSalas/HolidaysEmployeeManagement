@@ -2,7 +2,6 @@
  * 
  */
 package models;
-
 import interfaces.APerson;
 
 /**
@@ -11,18 +10,12 @@ import interfaces.APerson;
  */
 public class ApplicationModel {
 	private static String employeeName;
-	private Employee employee;
+	private static APerson employee;
 	
 	public ApplicationModel() {
 		this.employeeName = new String();
-		
 	}
-
-	@Override
-	public String toString() {
-		return "ApplicationModel [employeeName=" + employeeName + "]";
-	}
-
+	
 	/**
 	 * @param employeeName the employeeName to set
 	 */
@@ -30,15 +23,16 @@ public class ApplicationModel {
 		this.employeeName = employeeName;
 	}
 	
-
-	
 	public static String getEmployeeName() {
 		return employeeName;
 	}
-
+	
+	public void setEmployeeData(APerson person) {
+		this.employee = person;
+	}
+	
 	public static APerson getEmployeeData() {
-		// TODO Auto-generated method stub
-		return null;
+		return employee;
 	}
 	
 

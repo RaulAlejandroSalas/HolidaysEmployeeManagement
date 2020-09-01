@@ -8,5 +8,7 @@ package enums;
  *
  */
 public enum Antiquity {
-	
+	ONE_YEAR,
+	TWO_TO_SIX_YEAR,
+	MORE_SEVEN_YEAR
 }

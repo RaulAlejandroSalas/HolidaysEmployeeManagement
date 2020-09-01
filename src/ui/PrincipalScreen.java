@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -45,6 +46,9 @@ public class PrincipalScreen extends JFrame {
 	private JTextArea textArea;
 	//ComboBox
 	private JComboBox<String> cBDepartmentOptions,cBAntiquity;
+	
+	
+
 	
 
 	public PrincipalScreen() {
@@ -81,11 +85,13 @@ public class PrincipalScreen extends JFrame {
 		newCalulationMenuItem.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
 		newCalulationMenuItem.setForeground(new Color(255, 0, 0)); // foreground color White
 		optionsMenu.add(newCalulationMenuItem);
+		newCalulationMenuItem.addActionListener(new PrincipalScreenController(this));
 
 		exitApplicationIteMenuItem = new ExitApplicationIteMenuItem("Exit");
 		exitApplicationIteMenuItem.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
 		exitApplicationIteMenuItem.setForeground(new Color(255, 0, 0)); // foreground color White
 		optionsMenu.add(exitApplicationIteMenuItem);
+		exitApplicationIteMenuItem.addActionListener(new PrincipalScreenController(this));
 
 		calculateMenu = new JMenu("Calculate");
 		calculateMenu.setBackground(new Color(255, 0, 0)); // Background color Red
@@ -98,6 +104,8 @@ public class PrincipalScreen extends JFrame {
 		holidaysCalculationMenuItem.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
 		holidaysCalculationMenuItem.setForeground(new Color(255, 0, 0)); // foreground color White
 		calculateMenu.add(holidaysCalculationMenuItem);
+		
+		holidaysCalculationMenuItem.addActionListener(new PrincipalScreenController(this));
 
 		aboutUsMenu = new JMenu("About Us...");
 		aboutUsMenu.setBackground(new Color(255, 0, 0)); // Background color Red
@@ -108,6 +116,7 @@ public class PrincipalScreen extends JFrame {
 		mIAboutUs = new JMenuItem("The Creator");
 		mIAboutUs.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
 		mIAboutUs.setForeground(new Color(255, 0, 0)); // foreground color White
+		mIAboutUs.addActionListener(listener-> JOptionPane.showMessageDialog(null, "This project has beed develop by Lic.Raul Alejandro Salas Texido"));
 		aboutUsMenu.add(mIAboutUs);
 	}
 
@@ -237,10 +246,94 @@ public class PrincipalScreen extends JFrame {
 			scrollPane.setBounds(220, 333, 385, 90);
 			add(scrollPane);
 		
-		
-		
+	}
+	
+	
+
+
+	/**
+	 * @return the txtEmployeeName
+	 */
+	public JTextField getTxtEmployeeName() {
+		return txtEmployeeName;
 	}
 
+	/**
+	 * @param txtEmployeeName the txtEmployeeName to set
+	 */
+	public void setTxtEmployeeName(JTextField txtEmployeeName) {
+		this.txtEmployeeName = txtEmployeeName;
+	}
+
+	/**
+	 * @return the txtEmployeeFirstLastName
+	 */
+	public JTextField getTxtEmployeeFirstLastName() {
+		return txtEmployeeFirstLastName;
+	}
+
+	/**
+	 * @param txtEmployeeFirstLastName the txtEmployeeFirstLastName to set
+	 */
+	public void setTxtEmployeeFirstLastName(JTextField txtEmployeeFirstLastName) {
+		this.txtEmployeeFirstLastName = txtEmployeeFirstLastName;
+	}
+
+	/**
+	 * @return the txtEmployeeSecondLastName
+	 */
+	public JTextField getTxtEmployeeSecondLastName() {
+		return txtEmployeeSecondLastName;
+	}
+
+	/**
+	 * @param txtEmployeeSecondLastName the txtEmployeeSecondLastName to set
+	 */
+	public void setTxtEmployeeSecondLastName(JTextField txtEmployeeSecondLastName) {
+		this.txtEmployeeSecondLastName = txtEmployeeSecondLastName;
+	}
+
+	/**
+	 * @return the textArea
+	 */
+	public JTextArea getTextArea() {
+		return textArea;
+	}
+
+	/**
+	 * @param textArea the textArea to set
+	 */
+	public void setTextArea(JTextArea textArea) {
+		this.textArea = textArea;
+	}
+
+	/**
+	 * @return the cBDepartmentOptions
+	 */
+	public JComboBox<String> getcBDepartmentOptions() {
+		return cBDepartmentOptions;
+	}
+
+	/**
+	 * @param cBDepartmentOptions the cBDepartmentOptions to set
+	 */
+	public void setcBDepartmentOptions(JComboBox<String> cBDepartmentOptions) {
+		this.cBDepartmentOptions = cBDepartmentOptions;
+	}
+
+	/**
+	 * @return the cBAntiquity
+	 */
+	public JComboBox<String> getcBAntiquity() {
+		return cBAntiquity;
+	}
+
+	/**
+	 * @param cBAntiquity the cBAntiquity to set
+	 */
+	public void setcBAntiquity(JComboBox<String> cBAntiquity) {
+		this.cBAntiquity = cBAntiquity;
+	}
 
 	/**
 	 * 

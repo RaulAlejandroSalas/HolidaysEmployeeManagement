@@ -7,6 +7,7 @@ import javax.swing.JMenuItem;
 
 import interfaces.ICommand;
 import models.ApplicationModel;
+import models.Employee;
 import receivers.HolidaysCalculationReceiver;
 
 /**

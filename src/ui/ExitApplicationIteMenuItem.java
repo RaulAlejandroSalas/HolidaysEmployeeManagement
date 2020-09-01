@@ -17,7 +17,8 @@ public class ExitApplicationIteMenuItem extends JMenuItem implements ICommand {
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		System.out.println("[INFO][ExitApplicationIteMenuItem] has been Execute Method invoked");
+		System.exit(0);
 		
 	}
 	

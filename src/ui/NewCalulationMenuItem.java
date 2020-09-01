@@ -17,7 +17,7 @@ public class NewCalulationMenuItem  extends JMenuItem implements ICommand{
 
 	@Override
 	public void execute() {
-		
+		System.out.println("[INFO][NewCalulationMenuItem] has been method execute invoked");
 		
 	}
 	

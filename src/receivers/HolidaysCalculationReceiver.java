@@ -12,6 +12,9 @@ import interfaces.APerson;
 public class HolidaysCalculationReceiver {
 	
 	public int calculate(APerson person) {
+		if(person.equals(null)) {
+			System.out.println("[INFO][Execute][HolidaysCalculationReceiver] calulate");
+		}
 		System.out.println("[INFO][Execute][HolidaysCalculationReceiver] calulate");
 		return 1;
 	}
