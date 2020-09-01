@@ -10,6 +10,7 @@ import java.util.Locale;
 import javax.swing.JOptionPane;
 
 import models.ApplicationModel;
+import ui.TermsAndUseScreen;
 import ui.WelcomeScreen;
 
 /**
@@ -36,6 +37,12 @@ public class WelcomeScreenController implements ActionListener {
 			JOptionPane.showMessageDialog(null, "You must enter the name");
 		}else {
 			//navigate next Screen
+			TermsAndUseScreen termsAndUseScreen = new TermsAndUseScreen();
+			termsAndUseScreen.setBounds(0,0,600,360);
+			termsAndUseScreen.setResizable(false);
+			termsAndUseScreen.setVisible(true);
+			termsAndUseScreen.setLocationRelativeTo(null);
+			welcomeScreen.setVisible(false);
 		}
 	}
 	

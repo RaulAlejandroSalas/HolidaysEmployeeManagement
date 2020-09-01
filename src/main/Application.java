@@ -34,20 +34,6 @@ public class Application {
 				}
 			}
 		});
-		
-//		TermsAndUseScreen termsAndUseScreen = new TermsAndUseScreen();
-//		termsAndUseScreen.setBounds(0,0,600,360);
-//		termsAndUseScreen.setResizable(false);
-//		termsAndUseScreen.setVisible(true);
-//		termsAndUseScreen.setLocationRelativeTo(null);
-		
-//		PrincipalScreen principalScreen = new PrincipalScreen();
-//		principalScreen.setBounds(0,0,640,535);
-//		principalScreen.setVisible(true);
-//		principalScreen.setResizable(false);
-//		principalScreen.setLocationRelativeTo(null);
-
-		
 	}
 
 }

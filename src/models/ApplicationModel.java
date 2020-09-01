@@ -8,7 +8,7 @@ package models;
  *
  */
 public class ApplicationModel {
-	private String employeeName;
+	private static String employeeName;
 
 	
 	public ApplicationModel() {
@@ -21,17 +21,16 @@ public class ApplicationModel {
 	}
 
 	/**
-	 * @return the employeeName
-	 */
-	public String getEmployeeName() {
-		return employeeName;
-	}
-
-	/**
 	 * @param employeeName the employeeName to set
 	 */
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
+	}
+	
+
+	
+	public static String getEmployeeName() {
+		return employeeName;
 	}
 	
 

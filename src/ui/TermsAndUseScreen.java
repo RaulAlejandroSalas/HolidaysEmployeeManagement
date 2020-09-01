@@ -19,13 +19,141 @@ import javax.swing.JTextArea;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import controller.TermAndUseController;
+
 /**
  * @author Lic. Raul Alejandro Salas Texido
  *
  */
-public class TermsAndUseScreen extends JFrame implements ActionListener,ChangeListener  {
+public class TermsAndUseScreen extends JFrame  {
 
 	
+	/**
+	 * @return the lbUpText
+	 */
+	public JLabel getLbUpText() {
+		return lbUpText;
+	}
+
+
+
+	/**
+	 * @param lbUpText the lbUpText to set
+	 */
+	public void setLbUpText(JLabel lbUpText) {
+		this.lbUpText = lbUpText;
+	}
+
+
+
+	/**
+	 * @return the lbLogo
+	 */
+	public JLabel getLbLogo() {
+		return lbLogo;
+	}
+
+
+
+	/**
+	 * @param lbLogo the lbLogo to set
+	 */
+	public void setLbLogo(JLabel lbLogo) {
+		this.lbLogo = lbLogo;
+	}
+
+
+
+	/**
+	 * @return the chAccept
+	 */
+	public JCheckBox getChAccept() {
+		return chAccept;
+	}
+
+
+
+	/**
+	 * @param chAccept the chAccept to set
+	 */
+	public void setChAccept(JCheckBox chAccept) {
+		this.chAccept = chAccept;
+	}
+
+
+
+	/**
+	 * @return the btnAccept
+	 */
+	public JButton getBtnAccept() {
+		return btnAccept;
+	}
+
+
+
+	/**
+	 * @param btnAccept the btnAccept to set
+	 */
+	public void setBtnAccept(JButton btnAccept) {
+		this.btnAccept = btnAccept;
+	}
+
+
+
+	/**
+	 * @return the btnCancel
+	 */
+	public JButton getBtnCancel() {
+		return btnCancel;
+	}
+
+
+
+	/**
+	 * @param btnCancel the btnCancel to set
+	 */
+	public void setBtnCancel(JButton btnCancel) {
+		this.btnCancel = btnCancel;
+	}
+
+
+
+	/**
+	 * @return the scrollPane
+	 */
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+
+
+	/**
+	 * @param scrollPane the scrollPane to set
+	 */
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+
+
+	/**
+	 * @return the tADescription
+	 */
+	public JTextArea gettADescription() {
+		return tADescription;
+	}
+
+
+
+	/**
+	 * @param tADescription the tADescription to set
+	 */
+	public void settADescription(JTextArea tADescription) {
+		this.tADescription = tADescription;
+	}
+
+
+
 	private static final long serialVersionUID = 1L;
 	/**
 	 * Attributes
@@ -44,17 +172,6 @@ public class TermsAndUseScreen extends JFrame implements ActionListener,ChangeLi
 		this.initComponents();
 	}
 	
-	@Override
-	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 	private void initComponents() {
@@ -80,26 +197,32 @@ public class TermsAndUseScreen extends JFrame implements ActionListener,ChangeLi
 		add(scrollPane);
 		
 		//Setting Section CheckBox
-		chAccept = new JCheckBox("I Accept");
+		chAccept = new JCheckBox("I " +TermAndUseController.getAppModelState()+ " Accept");
 		chAccept.setBounds(10, 250, 300, 30);
 		add(chAccept);
+		
+		chAccept.addChangeListener(new TermAndUseController(this));
 		
 		//Setting Section Buttons
 		btnAccept = new JButton("Continue");
 		btnAccept.setBounds(10, 290, 100, 30);
 		btnAccept.setEnabled(false);
 		add(btnAccept);
+		btnAccept.addActionListener(new TermAndUseController(this));
 		
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(120, 290, 100, 30);
 		add(btnCancel);
 		
+		btnCancel.addActionListener(new TermAndUseController(this));
 		
 		//Setting Logo Right Side
 		ImageIcon image = new ImageIcon("images/coca-cola.png");
 		lbLogo = new JLabel(image);
 		lbLogo.setBounds(315, 135, 300, 300);
 		add(lbLogo);
+		
+		
 		
 		
 		
