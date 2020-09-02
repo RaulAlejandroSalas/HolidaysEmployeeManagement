@@ -5,9 +5,11 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -33,7 +35,7 @@ public class PrincipalScreen extends JFrame {
 	// Menus
 	private JMenu optionsMenu, calculateMenu, aboutUsMenu;
 	// ItemsMenu
-	private JMenuItem  mIAboutUs, mIExitApplication, mIHolidaysCalculation, mINewCalulation;
+	private JMenuItem  mIAboutUs, mIExitApplication, mIHolidaysCalculation, mINewCalulation, mIListOfEmployee;
 	 
 	
 	// Labels
@@ -48,12 +50,28 @@ public class PrincipalScreen extends JFrame {
 	//ComboBox
 	private JComboBox<String> cBDepartmentOptions,cBAntiquity;
 	
+	private JFileChooser fileChooser;
+	
 	
 	public PrincipalScreen() {
 		setLayout(null);
 		setTitle("Principal Screen");
 		getContentPane().setBackground(new Color(255, 0, 0));
 		this.initComponents();
+	}
+
+	/**
+	 * @return the mIListOfEmployee
+	 */
+	public JMenuItem getmIListOfEmployee() {
+		return mIListOfEmployee;
+	}
+
+	/**
+	 * @param mIListOfEmployee the mIListOfEmployee to set
+	 */
+	public void setmIListOfEmployee(JMenuItem mIListOfEmployee) {
+		this.mIListOfEmployee = mIListOfEmployee;
 	}
 
 	private void initComponents() {
@@ -65,7 +83,11 @@ public class PrincipalScreen extends JFrame {
 	
 	
 
-	private void initNavBarComponents() {
+	private void initNavBarComponents() 
+	{
+
+		fileChooser = new JFileChooser();
+		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 		// Setting MenuBar
 		menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(255, 0, 0));
@@ -83,6 +105,12 @@ public class PrincipalScreen extends JFrame {
 		mINewCalulation.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
 		mINewCalulation.setForeground(new Color(255, 0, 0)); // foreground color White
 		optionsMenu.add(mINewCalulation);
+		
+		
+		mIListOfEmployee = new JMenuItem("List Employees");
+		mIListOfEmployee.setFont(new Font("Andale Mono", 1, 14));
+		mIListOfEmployee.setForeground(new Color(255, 0, 0));
+		optionsMenu.add(mIListOfEmployee);
 		
 		mIExitApplication = new JMenuItem("Exit");
 		mIExitApplication.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
@@ -113,6 +141,20 @@ public class PrincipalScreen extends JFrame {
 		mIAboutUs.setForeground(new Color(255, 0, 0)); // foreground color White
 		mIAboutUs.addActionListener(listener-> JOptionPane.showMessageDialog(null, "This project has beed develop by Lic.Raul Alejandro Salas Texido"));
 		aboutUsMenu.add(mIAboutUs);
+	}
+
+	/**
+	 * @return the fileChooser
+	 */
+	public JFileChooser getFileChooser() {
+		return fileChooser;
+	}
+
+	/**
+	 * @param fileChooser the fileChooser to set
+	 */
+	public void setFileChooser(JFileChooser fileChooser) {
+		this.fileChooser = fileChooser;
 	}
 
 	private void initPositionTopComponents() {

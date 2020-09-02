@@ -5,6 +5,7 @@ package controller;
 
 import java.util.Locale;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import models.ApplicationModel;
@@ -29,6 +30,7 @@ public class WelcomeScreenController  {
 	private void initView() {
 		welcomeScreen.setBounds(0,0,350,450);
 		welcomeScreen.setResizable(false);
+		welcomeScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		welcomeScreen.setVisible(true);
 		welcomeScreen.setLocationRelativeTo(null);
 	}

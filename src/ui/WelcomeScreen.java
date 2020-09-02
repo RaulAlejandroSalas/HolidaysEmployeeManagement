@@ -42,7 +42,7 @@ public class WelcomeScreen extends JFrame{
 		 //setting Center Label System Name
 		 lbSystemName = new JLabel("Holidays Management System");
 		 lbSystemName.setBounds(35, 135, 300, 30);//setting label dimensions
-		 lbSystemName.setFont(new Font("Andele Mono", 3, 18));//setting Font size and type, negrita, cursive and size 18 
+		 lbSystemName.setFont(new Font("Andele Mono", 3, 18));//setting Font size and type, bold font, cursive and size 18 
 		 lbSystemName.setForeground(new Color(255,255,255)); //adding text Color
 		 add(lbSystemName);
 		 
@@ -50,14 +50,14 @@ public class WelcomeScreen extends JFrame{
 		 //setting Section Employee Name Data
 		 lbEmployeeName = new JLabel("Enter you Name:");
 		 lbEmployeeName.setBounds(45,212, 200, 30);
-		 lbEmployeeName.setFont(new Font("Andele Mono", 1, 12)); //negrita
+		 lbEmployeeName.setFont(new Font("Andele Mono", 1, 12)); //bold font
 		 lbEmployeeName.setForeground(new Color(255,255,255));
 		 add(lbEmployeeName);
 		 
 		 textEmployeeName = new JTextField();
 		 textEmployeeName.setBounds(45,240, 255, 25);
 		 textEmployeeName.setBackground(new Color(224,224,224));
-		 textEmployeeName.setFont(new Font("Andele Mono", 1, 14)); //negrita
+		 textEmployeeName.setFont(new Font("Andele Mono", 1, 14)); //bold font
 		 textEmployeeName.setForeground(new Color(255,0,0)); //setting color red to text
 		 add(textEmployeeName);
 		 
@@ -69,12 +69,10 @@ public class WelcomeScreen extends JFrame{
 		 btnEnter.setForeground(new Color(255,0,0));
 		 add(btnEnter);
 		 
-		 
-		 
 		 //setting Section Copy Rights
 		 lbCopyRights = new JLabel("� 2020 The Coca-Cola Company");
 		 lbCopyRights.setBounds(85,375, 300, 30);
-		 lbCopyRights.setFont(new Font("Andele Mono", 1, 12)); //negrita
+		 lbCopyRights.setFont(new Font("Andele Mono", 1, 12)); //bold font
 		 lbCopyRights.setForeground(new Color(255,255,255));
 		 add(lbCopyRights);
 		 
