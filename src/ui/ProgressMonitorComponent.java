@@ -9,6 +9,8 @@ import java.awt.GridBagLayout;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
@@ -18,6 +20,7 @@ import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.exceptions.CsvValidationException;
 
 import models.Employee;
+import utils.ObjectMapper;
 
 
 /**
@@ -51,7 +54,8 @@ public class ProgressMonitorComponent extends JFrame{
 		layout.addLayoutComponent(this.progressBar, cons);
 		add(this.progressBar);
 		setVisible(true);
-		//fill();
+		
+		
 		File file = new File(this.filePath);
 		FileReader fileReader = new FileReader(file);
 		CSVReader csvReader = new CSVReader(fileReader);
@@ -59,21 +63,20 @@ public class ProgressMonitorComponent extends JFrame{
 		long totalLengthFile = file.length();
 		double lengthPercent = 100.0/ totalLengthFile;
 		long readLength=0;
-		
 		String[] nextRecord;
+		List<String[]> records = new ArrayList<>();
 		while ((nextRecord=csvReader.readNext()) !=null) {
 			readLength += nextRecord.length;
-			System.out.println("Id: " + nextRecord[0]);
-			System.out.println("EmployeeName: " + nextRecord[1]);
-			System.out.println("firstLastName: " + nextRecord[2]);
-			System.out.println("secondLastName: " + nextRecord[3]);
-			Thread.sleep(500);
+			records.add(nextRecord);
+			Thread.sleep(100);
 		    System.out.println("==========================");	
 		    this.progressBar.setValue((int)Math.round(lengthPercent*readLength));
 		}
 		this.progressBar.setValue(100);
 		fileReader.close();
 		csvReader.close();
+		List<Employee> employees = ObjectMapper.mapListStringToListEmployee(records);
+		System.out.println(employees);
 	}
 	
 			
