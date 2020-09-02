@@ -115,11 +115,12 @@ antiquity, new Deparment(department)));
 	}
 
 
+
+
 	@Override
-	public void update(String event, List<Employee> employees) {
+	public void update(String event) {
 		System.out.println("[INFO] Received a Notification");
 		System.out.println(event);
-		System.out.println(employees);
 		
 	}
 

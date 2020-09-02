@@ -31,6 +31,10 @@ public class Employee extends APerson{
 	public Deparment getDepartment() {
 		return this.deparment;
 	}
+	
+	public String getLastName() {
+		return this.firstLastName + " " + this.secondLastName;
+	}
 
 	@Override
 	public String toString() {

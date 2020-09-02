@@ -31,6 +31,9 @@ public class ListEmployeeController implements IObserver{
 		listEmployeeScreen.setVisible(true);
 		listEmployeeScreen.setResizable(false);
 		listEmployeeScreen.setLocationRelativeTo(null);
+		
+		
+		
 	}
 	
 	
@@ -39,11 +42,10 @@ public class ListEmployeeController implements IObserver{
 	}
 
 	@Override
-	public void update(String event, List<Employee> employees) {
+	public void update(String event) {
 		System.out.println("[INFO][LISTEMPLOYEECONTROLLER] Received a Notification");
 		System.out.println(event);
-		System.out.println(employees);
-	
+		this.listEmployeeScreen.insertDataTable(this.appModel.getEmployees());
 		
 	}
 }

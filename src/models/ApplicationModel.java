@@ -31,8 +31,8 @@ public class ApplicationModel  {
 	}
 	
 	
-	public void notifyObservers(String event, List<Employee> data) {
-		this.observers.forEach(observer->observer.update(event, data));		
+	public void notifyObservers(String event) {
+		this.observers.forEach(observer->observer.update(event));		
 	}
 	
 	

@@ -101,7 +101,9 @@ public class ProgressMonitorComponent extends JFrame{
 			ListEmployeeScreen listEmployeeScreen = new ListEmployeeScreen();
 			ListEmployeeController listEmployeeController = new ListEmployeeController(listEmployeeScreen, appModel);
 			listEmployeeController.initController();
-			this.appModel.notifyObservers(Event.FILE_LOADED, ObjectMapper.mapListStringToListEmployee(records));
+			List<Employee> employees = ObjectMapper.mapListStringToListEmployee(records);
+			this.appModel.setEmployees(employees);
+			this.appModel.notifyObservers(Event.FILE_LOADED);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
