@@ -2,19 +2,57 @@
  * 
  */
 package models;
-import interfaces.APerson;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import interfaces.IObserver;
 
 /**
  * @author Lic.Raul Alejandro Salas Texido
  *
  */
-public class ApplicationModel {
+public class ApplicationModel  {
 	private static String userAuthenticateName;
 	private Employee employee;
+	private List<Employee> employees;
+	private final List<IObserver> observers;
 	
 	
+	public void registerObservers(IObserver ... observers) {
+		this.observers.addAll(Arrays.asList(observers));
+	}
+	
+	public void registerObserver(IObserver observer) {
+		this.observers.add(observer);
+	}
+	
+	public void removeObserver(IObserver observer) {
+		this.observers.remove(observer);
+	}
+	
+	
+	public void notifyObservers(String event, List<Employee> data) {
+		this.observers.forEach(observer->observer.update(event, data));		
+	}
+	
+	
+	/**
+	 * @return the employees
+	 */
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	/**
+	 * @param employees the employees to set
+	 */
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
+
 	public ApplicationModel() {
 		this.userAuthenticateName = new String();
+		this.observers = new ArrayList<>();
 	}
 
 	/**

@@ -4,11 +4,15 @@
 package controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
+import com.opencsv.exceptions.CsvValidationException;
 
+import interfaces.IObserver;
 import models.ApplicationModel;
 import models.Deparment;
 import models.Employee;
@@ -19,14 +23,19 @@ import ui.ProgressMonitorComponent;
  * @author Lic.Raul Alejandro Salas Texido
  *
  */
-public class PrincipalScreenController {
+public class PrincipalScreenController implements IObserver {
 
+	/**
+	 * Attributes
+	 * **/
+	
 	private PrincipalScreen principalScreen;
 	private ApplicationModel appModel;
 	
 	public PrincipalScreenController(PrincipalScreen principalScreen, ApplicationModel appModel) {
 		this.principalScreen = principalScreen;
 		this.appModel = appModel;
+		this.appModel.registerObserver(this);
 		this.initView();
 	}
 	
@@ -43,14 +52,27 @@ public class PrincipalScreenController {
 	public void initController() {
 		this.principalScreen.getmINewCalulation().addActionListener(e->resetViewComponents());
 		this.principalScreen.getmIHolidaysCalculation().addActionListener(e->calculateHolidays());
-		this.principalScreen.getmIListOfEmployee().addActionListener(e->loadListOfEmployees());
+		this.principalScreen.getmIListOfEmployee().addActionListener(e->{
+			try {
+				loadListOfEmployees();
+			} catch (CsvValidationException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		this.principalScreen.getmIExitApplication().addActionListener(e->System.exit(0));
 		
 	}
 	
 	
 	
-	private void loadListOfEmployees() {
+	private void loadListOfEmployees() throws CsvValidationException, IOException, InterruptedException {
 		
 		System.out.println("[INFO] Loading List Of Employees from File...");
 		int result = this.principalScreen.getFileChooser().showOpenDialog(principalScreen);
@@ -63,7 +85,7 @@ public class PrincipalScreenController {
 			new Thread() {
 				public void run() {
 					try {
-						 new ProgressMonitorComponent(selectedFile.getAbsolutePath());
+						new ProgressMonitorComponent(selectedFile.getAbsolutePath(),appModel);
 					}catch(Exception ex) {
 						ex.printStackTrace();
 					}
@@ -90,6 +112,15 @@ antiquity, new Deparment(department)));
 		this.principalScreen.getTxtEmployeeName().setText("");
 		this.principalScreen.getTxtEmployeeFirstLastName().setText("");
 		this.principalScreen.getTxtEmployeeSecondLastName().setText("");
+	}
+
+
+	@Override
+	public void update(String event, List<Employee> employees) {
+		System.out.println("[INFO] Received a Notification");
+		System.out.println(event);
+		System.out.println(employees);
+		
 	}
 
 
