@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -97,7 +98,7 @@ public class PrincipalScreenController implements IObserver {
 
 
 	private void calculateHolidays() {
-		String employeeName,employeeLastFirstName,employeeLastSecondName,department,antiquity;
+		String employeeName,employeeLastFirstName,employeeLastSecondName;
 		employeeName=this.principalScreen.getTxtEmployeeName().getText().trim();
 		employeeLastFirstName = this.principalScreen.getTxtEmployeeFirstLastName().getText().trim();
 		employeeLastSecondName= this.principalScreen.getTxtEmployeeSecondLastName().getText().trim();
@@ -105,21 +106,34 @@ public class PrincipalScreenController implements IObserver {
 		ItemComboBox departmentItem = (ItemComboBox)this.principalScreen.getcBDepartmentOptions().getSelectedItem();
 		ItemComboBox antiquityItem = (ItemComboBox)this.principalScreen.getcBAntiquity().getSelectedItem();
 		
+		if(employeeName.equals("") || employeeLastFirstName.equals("") || employeeLastSecondName.equals("") 
+				|| departmentItem.getId()==0 || antiquityItem.getId()==0) {
+			JOptionPane.showMessageDialog(principalScreen, "Sorry,Data not Valid...");
+		}else {
+			switch (departmentItem.getId()) {
+			case 1: //Customer service
+				break;
+			case 2: //Logistics department
+				break;
+			case 3: //Management department
+				break;
+			default:
+				break;
+			}
+			System.out.println("==========================Department===============");
+			System.out.println( departmentItem.getId() + " : " + departmentItem.getDescription() );
+			System.out.println("==========================Department===============");
+			
+			
+			System.out.println("==========================Antiquity===============");
+			System.out.println( antiquityItem.getId() + " : " + antiquityItem.getDescription() );
+			System.out.println("==========================Antiquity===============");
 		
+		}
 		
-		System.out.println("==========================Department===============");
-		System.out.println( departmentItem.getId() + " : " + departmentItem.getDescription() );
-		System.out.println("==========================Department===============");
-		
-		
-		System.out.println("==========================Antiquity===============");
-		System.out.println( antiquityItem.getId() + " : " + antiquityItem.getDescription() );
-		System.out.println("==========================Antiquity===============");
-	
 		
 	}
-
-
+	
 	private void resetViewComponents() {
 		this.principalScreen.getTxtEmployeeName().setText("");
 		this.principalScreen.getTxtEmployeeFirstLastName().setText("");
