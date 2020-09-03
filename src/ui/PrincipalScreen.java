@@ -6,6 +6,8 @@ package ui;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
+import java.util.Arrays;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -22,6 +24,10 @@ import javax.swing.JTextField;
 
 import controller.PrincipalScreenController;
 import models.ApplicationModel;
+import models.ItemComboBox;
+import utils.ComboBoxDataGenerator;
+import utils.ComboBoxItemRender;
+import utils.Event;
 
 /**
  * @author Lic.Raul Alejandro Salas Texido
@@ -48,7 +54,7 @@ public class PrincipalScreen extends JFrame {
 	// TextArea
 	private JTextArea textArea;
 	//ComboBox
-	private JComboBox<String> cBDepartmentOptions,cBAntiquity;
+	private JComboBox<ItemComboBox> cBDepartmentOptions,cBAntiquity;
 	
 	private JFileChooser fileChooser;
 	
@@ -250,20 +256,14 @@ public class PrincipalScreen extends JFrame {
 		lBDeparment.setFont(new Font("Andele Mono",1,12));
 		lBDeparment.setForeground(new Color(255,255,255));
 		add(lBDeparment);
-		
 			//ComboBox Departments Data
-			cBDepartmentOptions = new JComboBox<String>();
+			cBDepartmentOptions = new JComboBox<ItemComboBox>(ComboBoxDataGenerator.generateData(Event.DEPARTMENT_DATA));
+			cBDepartmentOptions.setRenderer(new ComboBoxItemRender());
 			cBDepartmentOptions.setBounds(220, 213, 220, 25);
 			cBDepartmentOptions.setBackground(new Color(224,224,224));
 			cBDepartmentOptions.setFont(new Font("Andele Mono", 1, 12));
 			cBDepartmentOptions.setForeground(new Color(255,0,0));
-			/*
-			 * TODO here I must to improve the implementation 
-			 * */
-			cBDepartmentOptions.addItem("");
-			cBDepartmentOptions.addItem("Customer service");
-			cBDepartmentOptions.addItem("Logistics department");
-			cBDepartmentOptions.addItem("Management department");
+			
 			add(cBDepartmentOptions);
 		
 		/**
@@ -274,16 +274,13 @@ public class PrincipalScreen extends JFrame {
 		lBAntiquity.setFont(new Font("Andele Mono", 1, 12));
 		lBAntiquity.setForeground(new Color(255,255,255));
 		add(lBAntiquity);
-			//ComboBox Antiquity Data
-			cBAntiquity = new JComboBox<String>();
+		
+			cBAntiquity = new JComboBox<ItemComboBox>(ComboBoxDataGenerator.generateData(Event.ANTIQUITY_DATA));
 			cBAntiquity.setBounds(220, 273, 220, 25);
 			cBAntiquity.setBackground(new Color(224,224,224));
 			cBAntiquity.setFont(new Font("Andele Mono", 1, 12));
+			cBAntiquity.setRenderer(new ComboBoxItemRender());
 			cBAntiquity.setForeground(new Color(255,0,0));
-			cBAntiquity.addItem("");
-			cBAntiquity.addItem("1 year of service");
-			cBAntiquity.addItem("2 to 6 years of service");
-			cBAntiquity.addItem("7 years or more of service");
 			add(cBAntiquity);
 			
 		/**
@@ -413,28 +410,28 @@ public class PrincipalScreen extends JFrame {
 	/**
 	 * @return the cBDepartmentOptions
 	 */
-	public JComboBox<String> getcBDepartmentOptions() {
+	public JComboBox<ItemComboBox> getcBDepartmentOptions() {
 		return cBDepartmentOptions;
 	}
 
 	/**
 	 * @param cBDepartmentOptions the cBDepartmentOptions to set
 	 */
-	public void setcBDepartmentOptions(JComboBox<String> cBDepartmentOptions) {
+	public void setcBDepartmentOptions(JComboBox<ItemComboBox> cBDepartmentOptions) {
 		this.cBDepartmentOptions = cBDepartmentOptions;
 	}
 
 	/**
 	 * @return the cBAntiquity
 	 */
-	public JComboBox<String> getcBAntiquity() {
+	public JComboBox<ItemComboBox> getcBAntiquity() {
 		return cBAntiquity;
 	}
 
 	/**
 	 * @param cBAntiquity the cBAntiquity to set
 	 */
-	public void setcBAntiquity(JComboBox<String> cBAntiquity) {
+	public void setcBAntiquity(JComboBox<ItemComboBox> cBAntiquity) {
 		this.cBAntiquity = cBAntiquity;
 	}
 

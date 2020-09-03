@@ -16,6 +16,7 @@ import interfaces.IObserver;
 import models.ApplicationModel;
 import models.Deparment;
 import models.Employee;
+import models.ItemComboBox;
 import ui.NewEmployeeScreen;
 import ui.PrincipalScreen;
 import ui.ProgressMonitorComponent;
@@ -100,11 +101,22 @@ public class PrincipalScreenController implements IObserver {
 		employeeName=this.principalScreen.getTxtEmployeeName().getText().trim();
 		employeeLastFirstName = this.principalScreen.getTxtEmployeeFirstLastName().getText().trim();
 		employeeLastSecondName= this.principalScreen.getTxtEmployeeSecondLastName().getText().trim();
-		department = this.principalScreen.getcBDepartmentOptions().getSelectedItem().toString();
-		antiquity = this.principalScreen.getcBAntiquity().getSelectedItem().toString();
-		this.appModel.setEmployee(new Employee(employeeName,employeeLastFirstName,employeeLastSecondName, 
-antiquity, new Deparment(department)));
-		System.out.println(this.appModel.getEmployee());
+				
+		ItemComboBox departmentItem = (ItemComboBox)this.principalScreen.getcBDepartmentOptions().getSelectedItem();
+		ItemComboBox antiquityItem = (ItemComboBox)this.principalScreen.getcBAntiquity().getSelectedItem();
+		
+		
+		
+		System.out.println("==========================Department===============");
+		System.out.println( departmentItem.getId() + " : " + departmentItem.getDescription() );
+		System.out.println("==========================Department===============");
+		
+		
+		System.out.println("==========================Antiquity===============");
+		System.out.println( antiquityItem.getId() + " : " + antiquityItem.getDescription() );
+		System.out.println("==========================Antiquity===============");
+	
+		
 	}
 
 
