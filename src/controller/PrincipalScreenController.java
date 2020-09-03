@@ -26,9 +26,6 @@ import ui.ProgressMonitorComponent;
  */
 public class PrincipalScreenController implements IObserver {
 
-	/**
-	 * Attributes
-	 * **/
 	
 	private PrincipalScreen principalScreen;
 	private ApplicationModel appModel;
@@ -58,13 +55,10 @@ public class PrincipalScreenController implements IObserver {
 			try {
 				loadListOfEmployees();
 			} catch (CsvValidationException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		});
@@ -72,13 +66,9 @@ public class PrincipalScreenController implements IObserver {
 		
 	}
 	
-	
-	
 	private void createNewEmployee() {
-		NewEmployeeScreen newEmployeeScreen = new NewEmployeeScreen();
-		newEmployeeScreen.setBounds(0,0,350,470);
-		newEmployeeScreen.setVisible(true);
-		newEmployeeScreen.setLocationRelativeTo(null);
+		new NewEmployeeController(new NewEmployeeScreen(), appModel)
+			.initController();	
 	}
 
 
@@ -125,16 +115,9 @@ antiquity, new Deparment(department)));
 	}
 
 
-
-
 	@Override
 	public void update(String event) {
 		System.out.println("[INFO] Received a Notification");
-		System.out.println(event);
-		
+		System.out.println(event);		
 	}
-
-
-	
-	
 }

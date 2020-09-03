@@ -18,6 +18,7 @@ import javax.swing.JTextField;
  */
 public class NewEmployeeScreen extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JLabel lbEmployeeName,lbEmployeeLastName,lbEmployeeLastSecondName, lbScreenName, lbDepartment,lbAntiquity;
 	private JTextField textEmployeeName, txtEmployeeLastFirstName, txtEmployeeLastSecondName;
 	private JComboBox<String> cBDepartmentOptions,cBAntiquity;
@@ -108,9 +109,9 @@ public class NewEmployeeScreen extends JFrame {
 			cBDepartmentOptions.addItem("Management department");
 			add(cBDepartmentOptions);
 	
-			/**
-			 * Setting Section Antiquity
-			 * **/
+		/**
+		  * Setting Section Antiquity
+		* **/
 		lbAntiquity = new JLabel("Select Antiquity:");
 		lbAntiquity.setBounds(45,304, 180, 25);
 		lbAntiquity.setFont(new Font("Andele Mono", 1, 12));
@@ -128,7 +129,6 @@ public class NewEmployeeScreen extends JFrame {
 			cBAntiquity.addItem("7 years or more of service");
 			add(cBAntiquity);	
 			
-	   
 	    //Setting Section button Enter 
 		btnEnter =  new JButton("Create");
 		btnEnter.setBounds(125, 380, 100,30);
@@ -136,10 +136,92 @@ public class NewEmployeeScreen extends JFrame {
 		btnEnter.setFont(new Font("Andele Mono",1,14));
 		btnEnter.setForeground(new Color(255,0,0));
 		add(btnEnter);
-		
-		
-		
-		
 	}
+
+	/**
+	 * @return the textEmployeeName
+	 */
+	public JTextField getTextEmployeeName() {
+		return textEmployeeName;
+	}
+
+	/**
+	 * @param textEmployeeName the textEmployeeName to set
+	 */
+	public void setTextEmployeeName(JTextField textEmployeeName) {
+		this.textEmployeeName = textEmployeeName;
+	}
+
+	/**
+	 * @return the txtEmployeeLastFirstName
+	 */
+	public JTextField getTxtEmployeeLastFirstName() {
+		return txtEmployeeLastFirstName;
+	}
+
+	/**
+	 * @param txtEmployeeLastFirstName the txtEmployeeLastFirstName to set
+	 */
+	public void setTxtEmployeeLastFirstName(JTextField txtEmployeeLastFirstName) {
+		this.txtEmployeeLastFirstName = txtEmployeeLastFirstName;
+	}
+
+	/**
+	 * @return the txtEmployeeLastSecondName
+	 */
+	public JTextField getTxtEmployeeLastSecondName() {
+		return txtEmployeeLastSecondName;
+	}
+
+	/**
+	 * @param txtEmployeeLastSecondName the txtEmployeeLastSecondName to set
+	 */
+	public void setTxtEmployeeLastSecondName(JTextField txtEmployeeLastSecondName) {
+		this.txtEmployeeLastSecondName = txtEmployeeLastSecondName;
+	}
+
+	/**
+	 * @return the cBDepartmentOptions
+	 */
+	public JComboBox<String> getcBDepartmentOptions() {
+		return cBDepartmentOptions;
+	}
+
+	/**
+	 * @param cBDepartmentOptions the cBDepartmentOptions to set
+	 */
+	public void setcBDepartmentOptions(JComboBox<String> cBDepartmentOptions) {
+		this.cBDepartmentOptions = cBDepartmentOptions;
+	}
+
+	/**
+	 * @return the cBAntiquity
+	 */
+	public JComboBox<String> getcBAntiquity() {
+		return cBAntiquity;
+	}
+
+	/**
+	 * @param cBAntiquity the cBAntiquity to set
+	 */
+	public void setcBAntiquity(JComboBox<String> cBAntiquity) {
+		this.cBAntiquity = cBAntiquity;
+	}
+
+	/**
+	 * @return the btnEnter
+	 */
+	public JButton getBtnEnter() {
+		return btnEnter;
+	}
+
+	/**
+	 * @param btnEnter the btnEnter to set
+	 */
+	public void setBtnEnter(JButton btnEnter) {
+		this.btnEnter = btnEnter;
+	}
+	
+	
 	
 }
