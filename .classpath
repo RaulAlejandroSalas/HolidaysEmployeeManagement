@@ -12,5 +12,6 @@
 	<classpathentry kind="lib" path="lib/preflight-2.0.21.jar"/>
 	<classpathentry kind="lib" path="lib/xmpbox-2.0.21.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections4-4.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

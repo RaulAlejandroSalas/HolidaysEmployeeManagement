@@ -3,12 +3,24 @@
  */
 package utils;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+import com.opencsv.bean.ColumnPositionMappingStrategy;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+
+import models.Employee;
 
 /**
  * @author Lic.Raul Alejandro Salas Texido
@@ -16,7 +28,25 @@ import com.opencsv.CSVWriter;
  */
 public class CSVReadWriter {
 	
-	public void writeData(String pathFile) {
+	private static final String CSV_FILE_URI = "data/employee.csv";
+	private static final String[] columns = {"EmployeeName","EmployeeFirstLastName","EmployeeFirstSecondLastName","Department","Antiquity"};
+	public void writeData(Employee employee) {
+		try {
+			FileWriter outputfile = new FileWriter(CSV_FILE_URI,true);
+		    CSVWriter writer = new CSVWriter(outputfile, CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER,
+                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+                    System.getProperty("line.separator")); 
+			String[] data = {employee.getName(),employee.getLastName(),employee.getLastSecondName(),employee.getDepartment().getName(),employee.getAntiquity()}; 
+		    writer.writeNext(data); 
+		    writer.close(); 
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void generateData(String pathFile) {
 		try {
 			CSVWriter writer = new CSVWriter(new FileWriter(pathFile));
 			List<String[]> data= new ArrayList<String[]>();

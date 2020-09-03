@@ -33,8 +33,14 @@ public class Employee extends APerson{
 	}
 	
 	public String getLastName() {
-		return this.firstLastName + " " + this.secondLastName;
+		return this.firstLastName;
 	}
+	
+	public String getLastSecondName() {
+		return this.secondLastName;
+	}
+	
+	
 
 	@Override
 	public String toString() {

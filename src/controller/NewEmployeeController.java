@@ -6,7 +6,11 @@ package controller;
 import javax.swing.JOptionPane;
 
 import models.ApplicationModel;
+import models.Deparment;
+import models.Employee;
+import models.ItemComboBox;
 import ui.NewEmployeeScreen;
+import utils.CSVReadWriter;
 
 /**
  * @author Lic.Raul Alejandro Salas Texido
@@ -32,8 +36,7 @@ public class NewEmployeeController {
 	}
 	
 	public void initController() {
-		newEmployeeScreen.getBtnEnter().addActionListener(e->createNewEmployee());
-		
+		newEmployeeScreen.getBtnEnter().addActionListener(e->createNewEmployee());		
 	}
 
 
@@ -48,7 +51,16 @@ public class NewEmployeeController {
 		   newEmployeeScreen.getcBDepartmentOptions().getSelectedIndex()==0) {
 			JOptionPane.showMessageDialog(null, "Sorry,The data cannnot be empty...");
 		}else {
-			System.out.println("OKOKOK");
+			Employee employee = new Employee(
+					newEmployeeScreen.getTextEmployeeName().getText(),
+					newEmployeeScreen.getTxtEmployeeLastFirstName().getText(),
+					newEmployeeScreen.getTxtEmployeeLastSecondName().getText(),
+					newEmployeeScreen.getcBDepartmentOptions().getSelectedItem().toString(),
+					new Deparment(newEmployeeScreen.getcBAntiquity().getSelectedItem().toString()));
+			CSVReadWriter writer = new CSVReadWriter();
+			writer.writeData(employee);
+			JOptionPane.showMessageDialog(newEmployeeScreen, "The new Employee has been inserted correctly");
+			newEmployeeScreen.setVisible(false);
 		}
 	}
 	
