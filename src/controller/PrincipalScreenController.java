@@ -106,32 +106,73 @@ public class PrincipalScreenController implements IObserver {
 		ItemComboBox departmentItem = (ItemComboBox)this.principalScreen.getcBDepartmentOptions().getSelectedItem();
 		ItemComboBox antiquityItem = (ItemComboBox)this.principalScreen.getcBAntiquity().getSelectedItem();
 		
-		if(employeeName.equals("") || employeeLastFirstName.equals("") || employeeLastSecondName.equals("") 
-				|| departmentItem.getId()==0 || antiquityItem.getId()==0) {
+		if(isValidInput(employeeName, employeeLastFirstName, employeeLastSecondName, departmentItem, antiquityItem)) {
 			JOptionPane.showMessageDialog(principalScreen, "Sorry,Data not Valid...");
 		}else {
-			switch (departmentItem.getId()) {
-			case 1: //Customer service
+			int value =estimateHolidays(departmentItem.getId(),antiquityItem.getId());
+			String result = "The Employee " + employeeName +" " + employeeLastFirstName + " " + employeeLastSecondName + " has " + value + " days of vacation"; 
+			this.principalScreen.getTextArea().setText(result);
+		}	
+	}
+	
+	private int estimateHolidays(Integer id, Integer id2) {
+		int result = 0;
+		switch (id) {
+		case 1: //Customer service
+			switch (id2) {
+			case 1:
+				result = 4;
 				break;
-			case 2: //Logistics department
+			case 2:
+				result = 5;
 				break;
-			case 3: //Management department
+			case 3:
+				result = 6;
 				break;
 			default:
 				break;
 			}
-			System.out.println("==========================Department===============");
-			System.out.println( departmentItem.getId() + " : " + departmentItem.getDescription() );
-			System.out.println("==========================Department===============");
-			
-			
-			System.out.println("==========================Antiquity===============");
-			System.out.println( antiquityItem.getId() + " : " + antiquityItem.getDescription() );
-			System.out.println("==========================Antiquity===============");
-		
+			break;
+		case 2: //Logistics department
+			switch (id) {
+			case 1:
+				result = 8;
+				break;
+			case 2:
+				result = 9;
+				break;
+			case 3:
+				result = 10;
+				break;
+			default:
+				break;
+			}
+			break;
+		case 3: //Management department
+			switch (id) {
+			case 1:
+				result = 11;
+				break;
+			case 2:
+				result = 12;
+				break;
+			case 3:
+				result = 13;
+				break;
+			default:
+				break;
+			}
+			break;
+		default:
+			break;
 		}
-		
-		
+		return result;
+	}
+
+
+	private boolean isValidInput(String employeeName,String employeeLastFirstName,String employeeLastSecondName,ItemComboBox departmentItem, ItemComboBox antiquityItem) {
+		return employeeName.equals("") || employeeLastFirstName.equals("") || employeeLastSecondName.equals("") 
+				|| departmentItem.getId()==0 || antiquityItem.getId()==0;
 	}
 	
 	private void resetViewComponents() {
