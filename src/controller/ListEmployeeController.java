@@ -13,7 +13,7 @@ import interfaces.IObserver;
 import models.ApplicationModel;
 import models.Employee;
 import ui.ListEmployeeScreen;
-import utils.PDFExample;
+import utils.PDFDocument;
 import utils.PDFGenerator;
 
 /**
@@ -51,7 +51,7 @@ public class ListEmployeeController implements IObserver{
 	}
 
 	private void exportBtnHandle() throws IOException {
-		new PDFGenerator().generatePdf(PDFExample.createContent(this.appModel.getEmployees()));
+		new PDFGenerator().generatePdf(PDFDocument.createContent(this.appModel.getEmployees()));
 	}
 
 	@Override

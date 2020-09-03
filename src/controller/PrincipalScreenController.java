@@ -16,6 +16,7 @@ import interfaces.IObserver;
 import models.ApplicationModel;
 import models.Deparment;
 import models.Employee;
+import ui.NewEmployeeScreen;
 import ui.PrincipalScreen;
 import ui.ProgressMonitorComponent;
 
@@ -52,6 +53,7 @@ public class PrincipalScreenController implements IObserver {
 	public void initController() {
 		this.principalScreen.getmINewCalulation().addActionListener(e->resetViewComponents());
 		this.principalScreen.getmIHolidaysCalculation().addActionListener(e->calculateHolidays());
+		this.principalScreen.getmINewEmployee().addActionListener(e->createNewEmployee());
 		this.principalScreen.getmIListOfEmployee().addActionListener(e->{
 			try {
 				loadListOfEmployees();
@@ -72,6 +74,14 @@ public class PrincipalScreenController implements IObserver {
 	
 	
 	
+	private void createNewEmployee() {
+		NewEmployeeScreen newEmployeeScreen = new NewEmployeeScreen();
+		newEmployeeScreen.setBounds(0,0,350,470);
+		newEmployeeScreen.setVisible(true);
+		newEmployeeScreen.setLocationRelativeTo(null);
+	}
+
+
 	private void loadListOfEmployees() throws CsvValidationException, IOException, InterruptedException {
 		
 		System.out.println("[INFO] Loading List Of Employees from File...");

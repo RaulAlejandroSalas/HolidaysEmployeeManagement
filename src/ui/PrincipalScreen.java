@@ -35,7 +35,7 @@ public class PrincipalScreen extends JFrame {
 	// Menus
 	private JMenu optionsMenu, calculateMenu, aboutUsMenu;
 	// ItemsMenu
-	private JMenuItem  mIAboutUs, mIExitApplication, mIHolidaysCalculation, mINewCalulation, mIListOfEmployee;
+	private JMenuItem  mIAboutUs, mIExitApplication, mIHolidaysCalculation, mINewCalulation, mIListOfEmployee, mINewEmployee;
 	 
 	
 	// Labels
@@ -53,6 +53,20 @@ public class PrincipalScreen extends JFrame {
 	private JFileChooser fileChooser;
 	
 	
+	/**
+	 * @return the mINewEmployee
+	 */
+	public JMenuItem getmINewEmployee() {
+		return mINewEmployee;
+	}
+
+	/**
+	 * @param mINewEmployee the mINewEmployee to set
+	 */
+	public void setmINewEmployee(JMenuItem mINewEmployee) {
+		this.mINewEmployee = mINewEmployee;
+	}
+
 	public PrincipalScreen() {
 		setLayout(null);
 		setTitle("Principal Screen");
@@ -106,11 +120,19 @@ public class PrincipalScreen extends JFrame {
 		mINewCalulation.setForeground(new Color(255, 0, 0)); // foreground color White
 		optionsMenu.add(mINewCalulation);
 		
+		mINewEmployee = new JMenuItem("New Employee");
+		mINewEmployee.setFont(new Font("Andale Mono", 1, 14));
+		mINewEmployee.setForeground(new Color(255, 0, 0));
+		optionsMenu.add(mINewEmployee);
+		
 		
 		mIListOfEmployee = new JMenuItem("List Employees");
 		mIListOfEmployee.setFont(new Font("Andale Mono", 1, 14));
 		mIListOfEmployee.setForeground(new Color(255, 0, 0));
 		optionsMenu.add(mIListOfEmployee);
+		
+		
+		
 		
 		mIExitApplication = new JMenuItem("Exit");
 		mIExitApplication.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14

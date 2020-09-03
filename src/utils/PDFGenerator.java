@@ -23,7 +23,7 @@ public class PDFGenerator {
 		document = new PDDocument();
 		drawTable(document, table);
 		try {
-			document.save("data/sample.pdf");
+			document.save("data/ListOfEmployees.pdf");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
