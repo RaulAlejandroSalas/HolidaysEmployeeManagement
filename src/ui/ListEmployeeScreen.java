@@ -98,7 +98,9 @@ public class ListEmployeeScreen extends JFrame{
 		tableModel.addColumn("EmployeeLastName");
 		tableModel.addColumn("Antiquity");
 		tableModel.addColumn("Department");
-         for (Iterator<Employee> iterator = employees.iterator(); iterator.hasNext();) {
+		
+		Iterator<Employee> iterator = employees.iterator();
+		while (iterator.hasNext()) {
 			Employee employee = (Employee) iterator.next();
 			Object o[]= {employee.getName(),employee.getLastName() + " " + employee.getLastSecondName() , employee.getDepartment().getName(), employee.getAntiquity()};
 			tableModel.addRow(o);
