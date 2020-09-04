@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.PrincipalScreenController;
 import models.ApplicationModel;
@@ -108,6 +109,9 @@ public class PrincipalScreen extends JFrame {
 	{
 
 		fileChooser = new JFileChooser();
+		//Setting filter fort fileChooser
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("*.csv", "csv");
+		fileChooser.setFileFilter(filter);
 		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 		// Setting MenuBar
 		menuBar = new JMenuBar();
