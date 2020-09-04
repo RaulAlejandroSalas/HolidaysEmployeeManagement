@@ -75,6 +75,7 @@ public class PrincipalScreen extends JFrame {
 
 	public PrincipalScreen() {
 		setLayout(null);
+		setIconImage(new ImageIcon("images/icon.png").getImage());	
 		setTitle("Principal Screen");
 		getContentPane().setBackground(new Color(255, 0, 0));
 		this.initComponents();
@@ -120,11 +121,6 @@ public class PrincipalScreen extends JFrame {
 		optionsMenu.setForeground(new Color(255, 255, 255)); // foreground color White
 		menuBar.add(optionsMenu);
 
-		// Adding MenuItems to OptionsMenu
-		mINewCalulation = new JMenuItem("New");
-		mINewCalulation.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
-		mINewCalulation.setForeground(new Color(255, 0, 0)); // foreground color White
-		optionsMenu.add(mINewCalulation);
 		
 		mINewEmployee = new JMenuItem("New Employee");
 		mINewEmployee.setFont(new Font("Andale Mono", 1, 14));
@@ -136,6 +132,12 @@ public class PrincipalScreen extends JFrame {
 		mIListOfEmployee.setFont(new Font("Andale Mono", 1, 14));
 		mIListOfEmployee.setForeground(new Color(255, 0, 0));
 		optionsMenu.add(mIListOfEmployee);
+		// Adding MenuItems to OptionsMenu
+		mINewCalulation = new JMenuItem("Reset Input");
+		mINewCalulation.setFont(new Font("Andale Mono", 1, 14)); // bold font and size 14
+		mINewCalulation.setForeground(new Color(255, 0, 0)); // foreground color White
+		optionsMenu.add(mINewCalulation);
+	
 		
 		
 		

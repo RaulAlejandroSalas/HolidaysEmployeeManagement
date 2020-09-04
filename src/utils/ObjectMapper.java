@@ -17,7 +17,7 @@ public class ObjectMapper {
 
 	public static List<Employee>  mapListStringToListEmployee(List<String[]> src) {
 		return src.stream()
-			.map(x->new Employee(x[1], x[2], "", x[3], new Deparment(x[4]))).collect(Collectors.toList());
+			.map(x->new Employee(x[0], x[1], x[2], x[3], new Deparment(x[4]))).collect(Collectors.toList());
 		
 	}
 }

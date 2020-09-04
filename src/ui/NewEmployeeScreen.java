@@ -6,6 +6,7 @@ package ui;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -28,6 +29,7 @@ public class NewEmployeeScreen extends JFrame {
 	public NewEmployeeScreen() {
 		 setLayout(null); //default layout system
 		 setTitle("Create New Employee"); //Adding title to Principal Interface
+		 setIconImage(new ImageIcon("images/icon.png").getImage());
 		 getContentPane().setBackground(new Color(255,0,0));//adding background 
 		 this.initComponents();
 	}

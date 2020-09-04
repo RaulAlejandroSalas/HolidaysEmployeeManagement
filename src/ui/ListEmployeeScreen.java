@@ -9,9 +9,11 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -54,7 +56,8 @@ public class ListEmployeeScreen extends JFrame{
 	private JScrollPane jScrollPane;
 	public ListEmployeeScreen() {
 		setTitle("List of Employees");
-		
+		setIconImage(new ImageIcon("images/icon.png").getImage());
+			
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255,0,0));
 		getContentPane().add(panel,BorderLayout.NORTH);
@@ -65,13 +68,18 @@ public class ListEmployeeScreen extends JFrame{
 		
 		
 		blTitle.setFont(new Font("Andele Mono",1,18));
-		blTitle.setBackground(new Color(255,255,255));
+		blTitle.setForeground(new Color(255,255,255)); //adding text Color
+
 		
 		employeesListTable = new JTable();
 		jScrollPane = new JScrollPane(employeesListTable);		
 		
 		getContentPane().add(jScrollPane, BorderLayout.CENTER);
-		btnExport = new JButton("Export");
+		ImageIcon icon =new ImageIcon("images/export-icon.jpg");
+		Image img = icon.getImage() ;  
+		Image newimg = img.getScaledInstance( 30, 30,  java.awt.Image.SCALE_SMOOTH ) ;  
+
+		btnExport = new JButton("Export", new ImageIcon(newimg));
 		btnExport.setBackground(new Color(255,255,255));
 		btnExport.setFont(new Font("Andele Mono",1,14));
 		btnExport.setForeground(new Color(255,0,0));
@@ -88,16 +96,13 @@ public class ListEmployeeScreen extends JFrame{
 		DefaultTableModel tableModel = (DefaultTableModel)this.employeesListTable.getModel();
 		tableModel.addColumn("EmployeeName");
 		tableModel.addColumn("EmployeeLastName");
-		tableModel.addColumn("Department");
 		tableModel.addColumn("Antiquity");
+		tableModel.addColumn("Department");
          for (Iterator<Employee> iterator = employees.iterator(); iterator.hasNext();) {
 			Employee employee = (Employee) iterator.next();
-			Object o[]= {employee.getName(),employee.getLastName(), employee.getDepartment().getName(), employee.getAntiquity()};
-			System.out.println("[INFO] insert " + employee + "to table");
+			Object o[]= {employee.getName(),employee.getLastName() + " " + employee.getLastSecondName() , employee.getDepartment().getName(), employee.getAntiquity()};
 			tableModel.addRow(o);
 		}
-		
-
 	}
 	
 }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
@@ -55,6 +56,8 @@ public class ProgressMonitorComponent extends JFrame{
 	
 	public void initView() throws CsvValidationException, IOException, InterruptedException {
 	    GridBagLayout layout = new GridBagLayout();
+		setIconImage(new ImageIcon("images/icon.png").getImage());
+			
 	    GridBagConstraints cons = new GridBagConstraints();
 		setTitle("Please wait, Loading List of Employees...");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,7 +93,6 @@ public class ProgressMonitorComponent extends JFrame{
 				readLength += nextRecord.length;
 				records.add(nextRecord);
 				Thread.sleep(100);
-			    System.out.println("==========================");	
 			    this.progressBar.setValue((int)Math.round(lengthPercent*readLength));
 			}
 			this.progressBar.setValue(100);
@@ -102,6 +104,9 @@ public class ProgressMonitorComponent extends JFrame{
 			ListEmployeeController listEmployeeController = new ListEmployeeController(listEmployeeScreen, appModel);
 			listEmployeeController.initController();
 			List<Employee> employees = ObjectMapper.mapListStringToListEmployee(records);
+			System.out.println(employees);
+			
+			
 			this.appModel.setEmployees(employees);
 			this.appModel.notifyObservers(Event.FILE_LOADED);
 		} catch (FileNotFoundException e) {

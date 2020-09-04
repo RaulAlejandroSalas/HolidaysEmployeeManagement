@@ -177,6 +177,7 @@ public class TermsAndUseScreen extends JFrame  {
 	
 	private void initComponents() {
 		lbUpText = new JLabel("TERMS AND CONDITIONS");
+		setIconImage(new ImageIcon("images/icon.png").getImage());
 		lbUpText.setBounds(215,5,200,30);
 		lbUpText.setFont(new Font("Andale Mono", 1, 14)); //bold font and size 14
 		lbUpText.setForeground(new Color(0,0,0));

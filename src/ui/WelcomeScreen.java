@@ -2,9 +2,9 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.*;
+import java.net.URL;
 
-import controller.WelcomeScreenController;
+import javax.swing.*;
 
 /**
  * @author Lic. Raul Alejandro Salas Texido
@@ -23,13 +23,9 @@ public class WelcomeScreen extends JFrame{
 		 setLayout(null); //default layout system
 		 setTitle("Welcome"); //Adding title to Principal Interface
 		 getContentPane().setBackground(new Color(255,0,0));//adding background 
-		 
-		// setIconImage(new ImageIcon(getClass().getResource("images/icon.png")).getImage()); //adding image to left
+		 setIconImage(new ImageIcon("images/icon.png").getImage());
 		 this.initComponents();
-	
 	}
-	
-	
 	
 	
 	private void initComponents() {
