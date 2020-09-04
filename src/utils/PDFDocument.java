@@ -42,15 +42,15 @@ public class PDFDocument {
 	public static Table createContent(List<Employee> employees) {
 		List<Column> columns = new ArrayList<Column>();
 		columns.add(new Column("FirstName", 90));
-		columns.add(new Column("LastName", 90));
-		columns.add(new Column("Antiquity", 230));
-		columns.add(new Column("Department", 43));
-
-		String[][] content = new String[employees.size()][Employee.class.getFields().length - 1];
+		columns.add(new Column("LastName", 230));
+		columns.add(new Column("Department", 150));
+		columns.add(new Column("Antiquity", 150));
+		
+		String[][] content = new String[employees.size()][Employee.class.getFields().length];
 		int count = 0;
 		for (Iterator<Employee> iterator = employees.iterator(); iterator.hasNext();) {
 			Employee employee = (Employee) iterator.next();
-			content[count] = (String[]) Arrays.asList(employee.getName(),employee.getLastName(), employee.getDepartment().getName(), employee.antiquity).toArray();
+			content[count] = (String[]) Arrays.asList(employee.getName(),employee.getLastName() + " " + employee.getLastSecondName(), employee.getDepartment().getName(), employee.antiquity).toArray();
 			count++;
 		}
 
