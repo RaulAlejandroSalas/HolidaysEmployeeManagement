@@ -3,15 +3,12 @@
  */
 package controller;
 
-import java.awt.Color;
 import java.io.IOException;
-import java.util.List;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
+import javax.swing.JOptionPane;
 
 import interfaces.IObserver;
 import models.ApplicationModel;
-import models.Employee;
 import ui.ListEmployeeScreen;
 import utils.PDFDocument;
 import utils.PDFGenerator;
@@ -52,6 +49,7 @@ public class ListEmployeeController implements IObserver{
 
 	private void exportBtnHandle() throws IOException {
 		new PDFGenerator().generatePdf(PDFDocument.createContent(this.appModel.getEmployees()));
+		JOptionPane.showMessageDialog(listEmployeeScreen, "The employee list has been successfully exported");
 	}
 
 	@Override

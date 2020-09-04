@@ -5,7 +5,6 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -15,8 +14,6 @@ import com.opencsv.exceptions.CsvValidationException;
 
 import interfaces.IObserver;
 import models.ApplicationModel;
-import models.Deparment;
-import models.Employee;
 import models.ItemComboBox;
 import ui.NewEmployeeScreen;
 import ui.PrincipalScreen;
